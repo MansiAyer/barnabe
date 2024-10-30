@@ -2,6 +2,8 @@
   "name": "bernabe",
   "version": "0.0.1",
   "description": "freely available chat app",
+  "author":"Mansi Ayer",
+  "license": "GPL-3.0-or-later",
   "type": "module",
   "dependencies": {
     "express": "^4.21.1",
