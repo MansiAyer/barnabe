@@ -1,0 +1,4 @@
+- fork, then clone the project
+- make a branch with the naming format dev-[your username here] (for example if i was contributing i'd make a branch called dev-mansiayer)
+- make your changes and contributions in this branch
+- make a pull request 
