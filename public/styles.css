@@ -51,22 +51,27 @@ nav {
     position: fixed; 
     bottom: 0px; 
     backdrop-filter: blur(45px); 
-    padding: 2rem 0rem;
     width: 100%;
     z-index: 500;
+    box-shadow: 0px -0px 10px var(--theme-accent);
 }
 
 nav > ul {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
     margin: 0rem;
     padding: 0px;
     list-style-type: none;
 }
 
-button {
+nav button {
     filter: invert(100%);
+    height: 8vh;
+    width: 8vh;
+    border: 1px solid var(--theme-accent);
+    background-color: transparent;
 }
 
 main > section { 
@@ -87,11 +92,25 @@ main > section {
 
 #roomlist > ul {
     list-style-type: none; 
-    padding: 1rem;
+    padding: 0rem;
 }
 
 #roomlist li::before {
     content: '# ';
+}
+
+#roomlist li {
+    padding: 1rem;
+    border-bottom: 1px var(--theme-accent);
+}
+
+#roomlist li:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#chat-display {
+    z-index: 1;
+    padding-bottom: 12vh;
 }
 
 #basics details {
@@ -115,13 +134,33 @@ main > section {
   margin-bottom: 0.5em;
 }
 
-#chat-display {
-    z-index: 1;
-}
-
 .room {
     display: none;
-    
+    background-color: deepskyblue;
+}
+.room > .history > .room-title {
+    margin: 0rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--theme-accent);
+}
+.room > .history > p {
+    margin: 0px;
+    padding: 0.5rem;
+}
+.room > .chatinput {
+    position: fixed;
+    bottom: 8vh;
+    left: 0px;
+    width: 100vw;
+    height: 6vh;
+    display: flex;
+}
+.room > .chatinput > input {
+    flex-grow: 1;
+    background-color: var(--theme-accent);
+    border-style: solid none none none;
+    border-color: var(--theme-accent);
+    color: var(--main-text);
 }
 
 #settings {
