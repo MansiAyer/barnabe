@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+	<title>bernabé</title>
+</head>
+<body>
+	<!--
+		https://www.behindthename.com/random/
+		dont change any parameters on this and generate, lots of cool names here. I got bernabé from here
+	-->
+
+	<nav>
+		<ul>
+			<li> <button onclick="toggleRoomsList()">☰</button> </li>
+			<li> <b>bernabé</b> </li>
+			<li> <button onclick="toggleSettings()">⚙️</button> </li>
+		</ul>
+	</nav>
+
+	<main>
+		<section id="roomlist" onfocus="console.log('focussy')" onblur="console.log('blurry')">
+			<h1>Rooms List</h1>
+			<hr>
+			<ul>
+				<li>Be careful</li>
+				<li>general</li>
+			</ul>
+		</section>
+
+		<section id="chat-display">
+			<div id="general" class="room">
+				<div class="history">
+				</div>
+				<form class="chatinput" onsubmit="sendThisMessage(event)">
+					<label for="msg">Message:</label>
+					<input type="text" name="message" />
+				</form>
+			</div>
+		</section>
+		
+		<section id="settings">
+			<h1>Settings</h1>
+			<hr>
+			<ul>
+				<li>Change nickname</li>
+				<li>Room check-in</li>
+				<li>Dark/Light mode</li>
+				<li>Other themes</li>
+				<li>Send feedback</li>
+				<li>Contribute to the project</li>
+				<li>Source code</li>
+			</ul>
+		</section>
+		
+	</main>
+
+
+	<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+	<script src="/socket.io/socket.io.js"></script>
+	<script type="text/javascript">
+		const socket = io();
+
+		function sendThisMessage(event) {
+			event.preventDefault();
+			let form = event.target;
+			let input = form.children[1];
+			let room = $(form).parent().attr("id");
+			if (input.value) {
+			    socket.emit('chat message', room, input.value);
+			    input.value = '';
+			}
+		}
+
+		socket.on('chat message', (room, msg) => {
+			const item = document.createElement('p');
+			item.textContent = msg;
+			let messages = document.getElementById(room).children[0];
+		    messages.appendChild(item);
+		    window.scrollTo(0, document.body.scrollHeight);
+
+		});
+
+		socket.on('system message', (room, msg) => {
+			const item = document.createElement('p');
+		    item.textContent = msg;
+		    let messages = document.getElementById(room).children[0];
+		    messages.appendChild(item);
+		    window.scrollTo(0, document.body.scrollHeight);
+		});
+	</script>
+	<script type="text/javascript">
+		function toggleRoomsList() {
+			$("#roomlist").toggle();
+		}
+		function toggleSettings() {
+			$("#settings").toggle();
+		}
+		$("#roomlist > ul > li").on("click", function(event) {
+			console.log(event.target.textContent);
+			let room = event.target.textContent;
+			//hide other open room and unhide this one
+			//$(.room:visible).toggle() will hide the visible room only
+			$("#"+room).toggle();
+			toggleRoomsList();
+		});
+	</script>
+</body>
+</html>

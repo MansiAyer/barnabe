@@ -1,0 +1,163 @@
+:root {
+    --theme-accent:#595959;
+    --main-bg:#d1d1d1;
+    --main-text:#222;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --theme-accent:#595959;
+        --main-bg:#222;
+        --main-text:#d1d1d1;
+    }
+}
+
+[data-theme="dark"] {
+    --theme-accent:#595959;
+    --main-bg:#222;
+    --main-text:#d1d1d1;
+}
+
+[data-theme="light"] {
+    --theme-accent:#595959;
+    --main-bg:#d1d1d1;
+    --main-text:#222;
+}
+
+html, body {
+	margin: 0px;
+	padding: 0px;
+	font-size: 16px; /*base font size*/
+	font-family: sans-serif;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+img {
+	height: inherit;
+}
+
+/*--------------AAAAAAAAA SO CUTE-------------*/
+
+body {
+    background-color: var(--main-bg);
+    color: var(--main-text);
+}
+
+nav {
+    position: fixed; 
+    bottom: 0px; 
+    backdrop-filter: blur(45px); 
+    padding: 2rem 0rem;
+    width: 100%;
+    z-index: 500;
+}
+
+nav > ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0rem;
+    padding: 0px;
+    list-style-type: none;
+}
+
+button {
+    filter: invert(100%);
+}
+
+main > section { 
+    padding: 2vh 4vw;
+}
+
+#roomlist {
+    display: none;
+    position: fixed;
+    height: 96vh;
+    width: 42vw;
+    top: 0px;
+    left: 0vw;
+    z-index: 50;
+    background-color: var(--main-bg);
+    border: 1px solid var(--theme-accent);
+}
+
+#roomlist > ul {
+    list-style-type: none; 
+    padding: 1rem;
+}
+
+#roomlist li::before {
+    content: '# ';
+}
+
+#basics details {
+  border: 1px solid var(--theme-accent);
+  border-radius: 4px;
+  padding: 0.5em 0.5em 0;
+}
+
+#basics summary {
+  font-weight: bold;
+  margin: -0.5em -0.5em 0;
+  padding: 0.5em;
+}
+
+#basics details[open] {
+  padding: 0.5em;
+}
+
+#basics details[open] summary {
+  border-bottom: 1px solid var(--theme-accent);
+  margin-bottom: 0.5em;
+}
+
+#chat-display {
+    z-index: 1;
+}
+
+.room {
+    display: none;
+    
+}
+
+#settings {
+    display: none;
+    position: fixed;
+    height: 96vh;
+    width: 42vw;
+    top: 0px;
+    right: 0px;
+    z-index: 100;
+    background-color: var(--main-bg);
+    border: 1px solid var(--theme-accent);
+}
+
+
+/*--------------hhehe-------------*/
+
+
+@media only screen and (min-width: 320px) and (max-width: 479px){
+    /*small, phones*/
+    html {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 480px) and (max-width: 767px){
+    /*medium, tablets*/
+    html {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px){
+    /*large, laptops*/
+}
+
+@media only screen and (min-width: 992px){
+    /*very large, monitors*/
+}
