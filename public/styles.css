@@ -110,7 +110,7 @@ main > section {
 
 #chat-display {
     z-index: 1;
-    padding-bottom: 12vh;
+    padding-bottom: 18vh;
 }
 
 #basics details {
@@ -136,12 +136,14 @@ main > section {
 
 .room {
     display: none;
-    background-color: deepskyblue;
 }
 .room > .history > .room-title {
+    position: sticky;
+    top: 0px;
     margin: 0rem;
     padding: 1rem;
     border-bottom: 1px solid var(--theme-accent);
+    backdrop-filter: blur(5px);
 }
 .room > .history > p {
     margin: 0px;
