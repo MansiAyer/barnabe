@@ -21,7 +21,7 @@
 	</nav>
 
 	<main>
-		<section id="roomlist" onfocus="console.log('focussy')" onblur="console.log('blurry')">
+		<section id="roomlist" onfocus="console.log('focussy')" onblur="console.log('blurry')" tabindex="-1">
 			<h1>Rooms List</h1>
 			<hr>
 			<ul>
@@ -40,7 +40,7 @@
 					<p>If you choose to tell someone your real name, your real age, or any irl personal details, that's all on you.</p>
 					<p>You are solely responsible for who you talk to, and what personal info you share with people on this site. <b>Any contributors to the project are not responsible for the way you choose to use this site.</b></p>
 					<details>
-						<summary>Common internet safety tips:</summary>
+						<summary>Common internet safety tips</summary>
 						<ul>
 							<li>Don't click on any links</li>
 							<li>Don't share irl details</li>
@@ -57,7 +57,7 @@
 				</div>
 				<form class="chatinput" onsubmit="sendThisMessage(event)">
 					<label style="display: none;">Message:</label>
-					<input type="text" name="message" />
+					<input type="text" name="message" placeholder="send a message" />
 				</form>
 			</div>
 		</section>

@@ -81,13 +81,14 @@ main > section {
 #roomlist {
     display: none;
     position: fixed;
-    height: 96vh;
+    height: 90vh;
     width: 42vw;
     top: 0px;
     left: 0vw;
     z-index: 50;
     background-color: var(--main-bg);
     border: 1px solid var(--theme-accent);
+    overflow: hidden auto;
 }
 
 #roomlist > ul {
@@ -140,41 +141,52 @@ main > section {
 .room > .history > .room-title {
     position: sticky;
     top: 0px;
-    margin: 0rem;
+    margin: 0rem 0rem 1rem;
     padding: 1rem;
     border-bottom: 1px solid var(--theme-accent);
     backdrop-filter: blur(5px);
 }
 .room > .history > p {
     margin: 0px;
-    padding: 0.5rem;
+    padding: 0.2rem 0.5rem;
 }
 .room > .chatinput {
     position: fixed;
-    bottom: 8vh;
-    left: 0px;
-    width: 100vw;
+    bottom: 10vh;
+    left: 5vw;
+    width: 90vw;
     height: 6vh;
     display: flex;
 }
 .room > .chatinput > input {
     flex-grow: 1;
     background-color: var(--theme-accent);
-    border-style: solid none none none;
+    border-radius: 5rem;
     border-color: var(--theme-accent);
     color: var(--main-text);
+    padding: 0px 1rem;
 }
 
 #settings {
     display: none;
     position: fixed;
-    height: 96vh;
+    height: 90vh;
     width: 42vw;
     top: 0px;
     right: 0px;
     z-index: 100;
     background-color: var(--main-bg);
     border: 1px solid var(--theme-accent);
+    overflow: hidden auto;
+}
+
+#settings > ul {
+    list-style-type: none; 
+    padding: 0rem;
+}
+#settings > ul > li {
+    margin: 0px; 
+    padding: 1rem;
 }
 
 
