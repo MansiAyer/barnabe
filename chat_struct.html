@@ -133,7 +133,9 @@
 				$(".room:visible").hide();
 				$("#"+room).show(); //needs to be after visible rooms are hidden because this itself is a room lol it'll get selected and hidden as one of the visible rooms 
 			}
-			toggleRoomsList();
+			if (screen.availWidth < 768) {
+				toggleRoomsList();
+			}
 		});
 	</script>
 	<script type="text/javascript">
