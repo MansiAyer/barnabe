@@ -83,6 +83,7 @@
 
 
 	<script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="dist/purify.min.js"></script>
 	<script src="/socket.io/socket.io.js"></script>
 	<script type="text/javascript">
 		const socket = io();
@@ -92,8 +93,9 @@
 			let form = event.target;
 			let input = form.children[1];
 			let room = $(form).parent().attr("id");
-			if (input.value) {
-			    socket.emit('chat message', room, input.value);
+			console.log(input.value + ", " + DOMPurify.sanitize(input.value));
+			if (DOMPurify.sanitize(input.value)) {
+			    socket.emit('chat message', room, DOMPurify.sanitize(input.value));
 			    input.value = '';
 			}
 		}

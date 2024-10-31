@@ -11,6 +11,7 @@ const io = new Server(server);
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 app.use(express.static(join(__dirname, 'public')));
+app.use(express.static(join(__dirname, 'node_modules/dompurify')));
 
 app.get('/', (req, res) => {
   res.sendFile(join(__dirname, 'chat_struct.html'));
