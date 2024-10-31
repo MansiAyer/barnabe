@@ -125,6 +125,7 @@ main > section {
 #chat-display {
     z-index: 1;
     padding-bottom: 18vh;
+    padding-top: 0px;
 }
 
 #basics details {
