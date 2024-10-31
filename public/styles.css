@@ -47,26 +47,44 @@ body {
     color: var(--main-text);
 }
 
+#loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: var(--main-bg);
+}
+
 nav {
     position: fixed; 
     bottom: 0px; 
     backdrop-filter: blur(45px); 
-    padding: 2rem 0rem;
     width: 100%;
     z-index: 500;
+    box-shadow: 0px -0px 10px var(--theme-accent);
 }
 
 nav > ul {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
     margin: 0rem;
     padding: 0px;
     list-style-type: none;
 }
 
-button {
+nav button {
     filter: invert(100%);
+    height: 8vh;
+    width: 8vh;
+    border: 1px solid var(--theme-accent);
+    background-color: transparent;
 }
 
 main > section { 
@@ -76,22 +94,37 @@ main > section {
 #roomlist {
     display: none;
     position: fixed;
-    height: 96vh;
+    height: 90vh;
     width: 42vw;
     top: 0px;
     left: 0vw;
     z-index: 50;
     background-color: var(--main-bg);
     border: 1px solid var(--theme-accent);
+    overflow: hidden auto;
 }
 
 #roomlist > ul {
     list-style-type: none; 
-    padding: 1rem;
+    padding: 0rem;
 }
 
 #roomlist li::before {
     content: '# ';
+}
+
+#roomlist li {
+    padding: 1rem;
+    border-bottom: 1px var(--theme-accent);
+}
+
+#roomlist li:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#chat-display {
+    z-index: 1;
+    padding-bottom: 18vh;
 }
 
 #basics details {
@@ -115,25 +148,58 @@ main > section {
   margin-bottom: 0.5em;
 }
 
-#chat-display {
-    z-index: 1;
-}
-
 .room {
     display: none;
-    
+}
+.room > .history > .room-title {
+    position: sticky;
+    top: 0px;
+    margin: 0rem 0rem 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid var(--theme-accent);
+    backdrop-filter: blur(5px);
+}
+.room > .history > p {
+    margin: 0px;
+    padding: 0.2rem 0.5rem;
+}
+.room > .chatinput {
+    position: fixed;
+    bottom: 10vh;
+    left: 5vw;
+    width: 90vw;
+    height: 6vh;
+    display: flex;
+}
+.room > .chatinput > input {
+    flex-grow: 1;
+    background-color: var(--theme-accent);
+    border-radius: 5rem;
+    border-color: var(--theme-accent);
+    color: var(--main-text);
+    padding: 0px 1rem;
 }
 
 #settings {
     display: none;
     position: fixed;
-    height: 96vh;
+    height: 90vh;
     width: 42vw;
     top: 0px;
     right: 0px;
     z-index: 100;
     background-color: var(--main-bg);
     border: 1px solid var(--theme-accent);
+    overflow: hidden auto;
+}
+
+#settings > ul {
+    list-style-type: none; 
+    padding: 0rem;
+}
+#settings > ul > li {
+    margin: 0px; 
+    padding: 1rem;
 }
 
 
@@ -145,6 +211,8 @@ main > section {
     html {
         font-size: 14px;
     }
+
+    /*navbar will be at bottom, side panels closed and cover half the screen*/
 }
 
 @media only screen and (min-width: 480px) and (max-width: 767px){
@@ -152,12 +220,18 @@ main > section {
     html {
         font-size: 14px;
     }
+
+    /*navbar will be at bottom, side panels closed and cover half the screen*/
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px){
     /*large, laptops*/
+
+    /*navbar at top, side panels open by default, cover like 30% of screen instead of half*/
 }
 
 @media only screen and (min-width: 992px){
     /*very large, monitors*/
+
+    /*navbar at top, side panels open by default, cover like 30% of screen instead of half*/
 }

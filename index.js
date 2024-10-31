@@ -18,15 +18,14 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
   socket.join("general");
-  socket.broadcast.emit('system message', 'a user connected');
+  socket.broadcast.emit('system message', 'general', 'a user connected');
 
   socket.on('disconnect', () => {
     socket.leave("general");
-    socket.broadcast.emit('system message', 'user disconnected');
+    socket.broadcast.emit('system message', 'general', 'user disconnected');
   });
 
   socket.on('chat message', (room, msg) => {
-    console.log(room + "," + msg);
     io.to(room).emit('chat message', room, msg);
   });
 });

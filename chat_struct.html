@@ -11,6 +11,9 @@
 		https://www.behindthename.com/random/
 		dont change any parameters on this and generate, lots of cool names here. I got bernabé from here
 	-->
+	<div id="loading">
+		<h3>loading</h3>
+	</div>
 
 	<nav>
 		<ul>
@@ -21,7 +24,7 @@
 	</nav>
 
 	<main>
-		<section id="roomlist" onfocus="console.log('focussy')" onblur="console.log('blurry')">
+		<section id="roomlist" onfocus="console.log('focussy')" onblur="console.log('blurry')" tabindex="-1">
 			<h1>Rooms List</h1>
 			<hr>
 			<ul>
@@ -31,12 +34,33 @@
 		</section>
 
 		<section id="chat-display">
+			<div id="basics">
+				<h1>Be careful</h1>
+				<hr>
+				<div>
+					<p>All <b>chat history will be lost</b> when you reload the page</p>
+					<p>Idk if some is taking screenshots or if some bot is crawling this site for your data. This is openly accessible to everyone.</p>
+					<p>If you choose to tell someone your real name, your real age, or any irl personal details, that's all on you.</p>
+					<p>You are solely responsible for who you talk to, and what personal info you share with people on this site. <b>Any contributors to the project are not responsible for the way you choose to use this site.</b></p>
+					<details>
+						<summary>Common internet safety tips</summary>
+						<ul>
+							<li>Don't click on any links</li>
+							<li>Don't share irl details</li>
+							<li>Don't share any passwords here</li>
+							<li>Don't trust strangers with secrets</li>
+							<li>there's probably a lot of other tips but we all use the internet, we all know about shady people online. Just be careful idk</li>
+						</ul>
+					</details>
+				</div>
+			</div>
 			<div id="general" class="room">
 				<div class="history">
+				<h1 class="room-title">general</h1>
 				</div>
 				<form class="chatinput" onsubmit="sendThisMessage(event)">
-					<label for="msg">Message:</label>
-					<input type="text" name="message" />
+					<label style="display: none;">Message:</label>
+					<input type="text" name="message" placeholder="send a message" />
 				</form>
 			</div>
 		</section>
@@ -99,13 +123,24 @@
 			$("#settings").toggle();
 		}
 		$("#roomlist > ul > li").on("click", function(event) {
-			console.log(event.target.textContent);
 			let room = event.target.textContent;
-			//hide other open room and unhide this one
-			//$(.room:visible).toggle() will hide the visible room only
-			$("#"+room).toggle();
+			if (room=="Be careful") {
+				$(".room").hide();
+				$("#basics").show(); //i have to keep a separate check for basics cause its id is different from its name on the roomlist
+			}
+			else {
+				$("#basics").hide();
+				$(".room:visible").hide();
+				$("#"+room).show(); //needs to be after visible rooms are hidden because this itself is a room lol it'll get selected and hidden as one of the visible rooms 
+			}
 			toggleRoomsList();
 		});
+	</script>
+	<script type="text/javascript">
+		window.addEventListener('load', 
+		  function() { 
+		    $('#loading').hide();
+		  }, false);
 	</script>
 </body>
 </html>
