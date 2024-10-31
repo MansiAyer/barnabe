@@ -11,6 +11,9 @@
 		https://www.behindthename.com/random/
 		dont change any parameters on this and generate, lots of cool names here. I got bernabé from here
 	-->
+	<div id="loading">
+		<h3>loading</h3>
+	</div>
 
 	<nav>
 		<ul>
@@ -132,6 +135,12 @@
 			}
 			toggleRoomsList();
 		});
+	</script>
+	<script type="text/javascript">
+		window.addEventListener('load', 
+		  function() { 
+		    $('#loading').hide();
+		  }, false);
 	</script>
 </body>
 </html>
