@@ -211,6 +211,8 @@ main > section {
     html {
         font-size: 14px;
     }
+
+    /*navbar will be at bottom, side panels closed and cover half the screen*/
 }
 
 @media only screen and (min-width: 480px) and (max-width: 767px){
@@ -218,12 +220,18 @@ main > section {
     html {
         font-size: 14px;
     }
+
+    /*navbar will be at bottom, side panels closed and cover half the screen*/
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px){
     /*large, laptops*/
+
+    /*navbar at top, side panels open by default, cover like 30% of screen instead of half*/
 }
 
 @media only screen and (min-width: 992px){
     /*very large, monitors*/
+
+    /*navbar at top, side panels open by default, cover like 30% of screen instead of half*/
 }
