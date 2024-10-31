@@ -228,10 +228,56 @@ main > section {
     /*large, laptops*/
 
     /*navbar at top, side panels open by default, cover like 30% of screen instead of half*/
+    nav {
+        bottom: unset;
+        top: 0px;
+    }
+    #roomlist {
+        display: block;
+        width: 12vw;
+        top: unset;
+        bottom: 0px;
+    }
+    #chat-display {
+        position: relative;
+        top: 8vh;
+    }
+    #settings {
+        display: block;
+        width: 22vw;
+        top: unset;
+        bottom: 0px;
+    }
 }
 
 @media only screen and (min-width: 992px){
     /*very large, monitors*/
 
     /*navbar at top, side panels open by default, cover like 30% of screen instead of half*/
+    nav {
+    }
+    main {
+        display: flex;
+        flex-direction: row;
+    }
+    #roomlist {
+        display: block;
+        position: static;
+        max-width: 25vw;
+    }
+    #chat-display {
+        min-width: 47vw;
+        max-height: 72vh;
+        overflow: hidden auto;
+        flex-grow: 1;
+    }
+    .room > .chatinput {
+        left: unset;
+        width: 47vw;
+    } 
+    #settings {
+        display: block;
+        position: static;
+        max-width: 28vw;
+    }
 }
