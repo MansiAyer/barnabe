@@ -85,6 +85,7 @@ nav button {
     width: 8vh;
     border: 1px solid var(--theme-accent);
     background-color: transparent;
+    font-size: x-large;
 }
 
 main > section { 

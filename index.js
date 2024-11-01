@@ -26,8 +26,8 @@ io.on('connection', (socket) => {
     socket.broadcast.emit('system message', 'general', 'user disconnected');
   });
 
-  socket.on('chat message', (room, msg) => {
-    io.to(room).emit('chat message', room, msg);
+  socket.on('chat message', (room, nick, msg) => {
+    io.to(room).emit('chat message', room, nick, msg);
   });
 });
 
