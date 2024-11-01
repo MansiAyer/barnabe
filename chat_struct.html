@@ -17,7 +17,7 @@
 
 	<nav>
 		<ul>
-			<li> <button onclick="toggleRoomsList()">☰</button> </li>
+			<li> <button onclick="toggleRoomsList()">🚪</button> </li>
 			<li> <b>bernabé</b> </li>
 			<li> <button onclick="toggleSettings()">⚙️</button> </li>
 		</ul>
@@ -69,7 +69,7 @@
 			<h1>Settings</h1>
 			<hr>
 			<ul>
-				<li>Change nickname</li>
+				<li>Nickname: <span id="nick"></span> </li>
 				<li>Room check-in</li>
 				<li>Dark/Light mode</li>
 				<li>Other themes</li>
@@ -88,21 +88,29 @@
 	<script type="text/javascript">
 		const socket = io();
 
+		const socketuser = "anon" + Math.floor(Math.random()*Math.pow(10,5));
+		$('#nick').textContent = socketuser; //???????
+		console.log(socketuser);
+
+
 		function sendThisMessage(event) {
 			event.preventDefault();
 			let form = event.target;
 			let input = form.children[1];
 			let room = $(form).parent().attr("id");
-			console.log(input.value + ", " + DOMPurify.sanitize(input.value));
 			if (DOMPurify.sanitize(input.value)) {
-			    socket.emit('chat message', room, DOMPurify.sanitize(input.value));
+			    socket.emit('chat message', room, socketuser, DOMPurify.sanitize(input.value));
 			    input.value = '';
 			}
 		}
 
-		socket.on('chat message', (room, msg) => {
+		socket.on('chat message', (room, nick, msg) => {
+			console.log(nick);
 			const item = document.createElement('p');
-			item.textContent = msg;
+			//const item2 = document.createElement('span');
+			//item2.textContent = nick; 
+			//this requires innerhtml sadge
+			item.textContent = nick+': '+msg;
 			let messages = document.getElementById(room).children[0];
 		    messages.appendChild(item);
 		    window.scrollTo(0, document.body.scrollHeight);

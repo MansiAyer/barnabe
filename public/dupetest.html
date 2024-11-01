@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>test</title>
+</head>
+<body>
+	<p>dupes:
+		<span id="dup">none?</span>
+	</p>
+	<p>first number in random numbers array:
+		<span id="fill">none?</span>
+	</p>
+	<p>my conclusion is that this is nice</p>
+</body>
+<script type="text/javascript">	
+	const somanynums = [3];
+	for (let i = 0; i < Math.pow(10,3); i++) {
+		let x = Math.floor(Math.random()*Math.random()*Math.pow(10,8));
+		somanynums.push(x);
+	}//created an array of 1k random numbers
+	somanynums.sort();
+	const dupes = somanynums.filter((num) => somanynums.indexOf(num)!= somanynums.lastIndexOf(num));
+	//create an array for duplicates
+	document.getElementById('dup').textContent = dupes.toString();
+	document.getElementById('fill').textContent = somanynums[0];
+</script>
+</html>
